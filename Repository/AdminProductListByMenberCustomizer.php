@@ -9,7 +9,7 @@ use Eccube\Entity\Member;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
- * Description of AdminProductListByMenberCustomizer
+ * 管理画面にログインしたら自分が登録した商品しから商品一覧に表示させないようにする
  *
  * @author Akira Kurozumi <info@a-zumi.net>
  */

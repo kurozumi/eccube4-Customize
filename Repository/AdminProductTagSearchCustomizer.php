@@ -9,7 +9,7 @@ use Doctrine\ORM\QueryBuilder;
 use Eccube\Repository\TagRepository;
 
 /**
- * Description of AdminProductTagSearchCustomizer
+ * 管理画面の商品一覧で商品タグ検索できるようにする
  *
  * @author Akira Kurozumi <info@a-zumi.net>
  */

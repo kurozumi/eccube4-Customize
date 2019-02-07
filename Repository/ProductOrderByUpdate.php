@@ -7,8 +7,11 @@ use Eccube\Repository\QueryKey;
 use Doctrine\ORM\QueryBuilder;
 
 /**
- * Description of ProductOrderByUpdated
+ * 更新日時順で並べ替えできるようにする
  *
+ * 管理画面＞設定＞システム設定＞マスターデータ管理の「mtb_product_list_order_by」で更新日時順を追加する。
+ * IDは4を設定
+ * 
  * @author Akira Kurozumi <info@a-zumi.net>
  */
 class ProductOrderByUpdate implements QueryCustomizer {

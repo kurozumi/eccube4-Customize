@@ -8,7 +8,10 @@ use Doctrine\ORM\QueryBuilder;
 use Eccube\Repository\OrderItemRepository;
 
 /**
- * Description of ProductOrderBySalse
+ * 売れ筋順で並べ替えできるようにする
+ * 
+ * 管理画面＞設定＞システム設定＞マスターデータ管理の「mtb_product_list_order_by」で更新日時順を追加する。
+ * IDは4を設定
  *
  * @author Akira Kurozumi <info@a-zumi.net>
  */

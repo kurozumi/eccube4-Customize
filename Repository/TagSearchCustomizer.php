@@ -9,7 +9,7 @@ use Doctrine\ORM\QueryBuilder;
 use Eccube\Repository\TagRepository;
 
 /**
- * Description of TagSearchCustomizer
+ * 検索ボックスで商品タグ検索できるようにする
  *
  * @author Akira Kurozumi <info@a-zumi.net>
  */

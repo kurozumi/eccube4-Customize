@@ -10,7 +10,7 @@ use Eccube\Repository\DeliveryFeeRepository;
 use Eccube\Annotation\ShoppingFlow;
 
 /**
- * Description of HighestDeliveryFeePreprocessor
+ * 商品送料が設定されている場合に一番高い送料を適用させる
  *
  * @author Akira Kurozumi <info@a-zumi.net>
  * 

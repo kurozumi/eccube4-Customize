@@ -8,7 +8,7 @@ use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Eccube\Request\Context;
 
 /**
- * Description of TitleListner
+ * フロントのタイトルタグの内容を書き換える
  *
  * @author Akira Kurozumi <info@a-zumi.net>
  */
