@@ -19,7 +19,7 @@ class ProductOrderByUpdate implements QueryCustomizer {
     public function customize(QueryBuilder $builder, $params, $queryKey)
     {
         if(!empty($params["orderby"]) && $params["orderby"]->getId() == 4) {
-            $builder->orderBy('p.update_date', 'DESC');
+            //$builder->orderBy('p.update_date', 'DESC');
         }
         
     }
