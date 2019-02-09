@@ -14,13 +14,6 @@ use Doctrine\ORM\QueryBuilder;
  */
 class AdminProductNoteSearchCustomizer implements QueryCustomizer {
 
-    protected $tagRepository;
-
-    public function __construct(TagRepository $tagRepository)
-    {
-        $this->tagRepository = $tagRepository;
-    }
-
     public function customize(QueryBuilder $builder, $params, $queryKey)
     {
         if ($params['id']) {
