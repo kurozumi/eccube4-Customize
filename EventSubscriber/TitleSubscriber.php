@@ -1,6 +1,6 @@
 <?php
 
-namespace Customize\EventListener;
+namespace Customize\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -12,7 +12,7 @@ use Eccube\Request\Context;
  *
  * @author Akira Kurozumi <info@a-zumi.net>
  */
-class TitleListner implements EventSubscriberInterface {
+class TitleSubscriber implements EventSubscriberInterface {
     
     public function __construct(
             Context $requestContext

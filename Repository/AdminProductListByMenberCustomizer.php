@@ -29,7 +29,7 @@ class AdminProductListByMenberCustomizer extends WhereCustomizer {
     {
         if (null !== $token = $this->tokenStorage->getToken()) {
             if($token->getUser() instanceof Member) {
-                //return [WhereClause::eq('p.Creator', ':creator_id', ['creator_id' => $token->getUser()])];
+                return [WhereClause::eq('p.Creator', ':creator_id', ['creator_id' => $token->getUser()])];
             }
         }
         
