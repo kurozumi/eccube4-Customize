@@ -33,10 +33,12 @@ class TagSearchCustomizer implements QueryCustomizer {
                     ->getResult();
 
             // QueryBuilderに対してタグを検索対象するように設定
-            $builder->innerJoin("p.ProductTag", "pt");
-            foreach ($result as $tag) {
-                $builder->orWhere("pt.Tag = :Tag");
-                $builder->setParameter("Tag", $tag->getId());
+            if($result) {
+                $builder->innerJoin("p.ProductTag", "pt");
+                foreach ($result as $tag) {
+                    $builder->orWhere("pt.Tag = :Tag");
+                    $builder->setParameter("Tag", $tag->getId());
+                }
             }
         }
     }

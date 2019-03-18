@@ -33,9 +33,9 @@ class TweetSubscriber implements EventSubscriberInterface {
     {
         $News = $event->getArgument("News");
         
-        if($News->getVisible()) {
+        if($News->isVisible()) {
             $connection = new TwitterOAuth(self::CONSUMER_KEY, self::CONSUMER_SECRET, self::ACCESS_TOKEN, self::ACCESS_TOKEN_SECRET);
-            $connection->post("statuses/update", ["status" => $News->getTitle()." ".$News->getUrl()]);
+            //$connection->post("statuses/update", ["status" => $News->getTitle()." ".$News->getUrl()]);
         }
 
     }
