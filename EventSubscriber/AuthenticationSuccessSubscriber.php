@@ -28,13 +28,13 @@ class AuthenticationSuccessSubscriber implements EventSubscriberInterface {
             return;
         }
         
-        switch($token->getRoles()) {
-            case "ROLE_USER":
+        switch($token->getProviderKey()) {
+            case "customer":
                 // 会員がログインしたときに何かする
                 var_dump("customer");
                 $User = $token->getUser();
                 break;
-            case "ROLE_ADMIN":
+            case "admin":
                 // メンバーがログインしたときに何かする
                 var_dump("admin");
                 $User = $token->getUser();
