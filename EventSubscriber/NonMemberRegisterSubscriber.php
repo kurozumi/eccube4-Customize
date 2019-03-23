@@ -44,7 +44,6 @@ class NonMemberRegisterSubscriber implements EventSubscriberInterface
 {
     use ControllerTrait;
     
-    const GUEST_ORDER_ID = "guest.order.id";
     /**
      * @var ContainerInterface
      */
