@@ -30,8 +30,6 @@ use Eccube\Form\Type\RepeatedPasswordType;
 use Eccube\Entity\Order;
 
 /**
- * Description of NonMemberRegister
- *
  * @author Akira Kurozumi <info@a-zumi.net>
  */
 class NonMemberRegisterType extends AbstractType{
