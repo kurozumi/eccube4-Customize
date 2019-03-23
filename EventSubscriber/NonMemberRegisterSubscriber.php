@@ -122,11 +122,13 @@ class NonMemberRegisterSubscriber implements EventSubscriberInterface
                 ->setAddr02($Order->getAddr02())
                 ->setPassword($password);
             
+            // パスワードを暗号化
             $encoder = $this->encoderFactory->getEncoder($Customer);
             $salt = $encoder->createSalt();
             $password = $encoder->encodePassword($Customer->getPassword(), $salt);
             $secretKey = $this->customerRepository->getUniqueSecretKey();
 
+            // 暗号化したパスワードをセット
             $Customer
                 ->setSalt($salt)
                 ->setPassword($password)
