@@ -1,0 +1,137 @@
+{#
+This file is part of EC-CUBE
+
+Copyright(c) LOCKON CO.,LTD. All Rights Reserved.
+
+http://www.lockon.co.jp/
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+#}
+{% extends 'default_frame.twig' %}
+
+{% set body_class = 'cart_page' %}
+
+{% block main %}
+<div class="ec-role">
+    <div class="ec-pageHeader">
+        <h1>{{ 'front.shopping.complete_title'|trans }}</h1>
+    </div>
+</div>
+
+<div class="ec-cartRole">
+    <div class="ec-cartRole__progress">
+        <ul class="ec-progress">
+            {% set step = 1 %}
+            <li class="ec-progress__item">
+                <div class="ec-progress__number">{{ step }}{% set step = step + 1 %}
+                </div>
+                <div class="ec-progress__label">{{ 'front.cart.nav__cart_items'|trans }}
+                </div>
+            </li>
+            {% if is_granted('ROLE_USER') == false %}
+                <li class="ec-progress__item">
+                    <div class="ec-progress__number">{{ step }}{% set step = step + 1 %}
+                    </div>
+                    <div class="ec-progress__label">{{ 'front.cart.nav__customer_info'|trans }}
+                    </div>
+                </li>
+            {% endif %}
+            <li class="ec-progress__item">
+                <div class="ec-progress__number">{{ step }}{% set step = step + 1 %}
+                </div>
+                <div class="ec-progress__label">{{ 'front.cart.nav__order'|trans }}
+                </div>
+            </li>
+            <li class="ec-progress__item">
+                <div class="ec-progress__number">{{ step }}{% set step = step + 1 %}
+                </div>
+                <div class="ec-progress__label">{{ 'front.cart.nav__confirm'|trans }}
+                </div>
+            </li>
+            <li class="ec-progress__item  is-complete">
+                <div class="ec-progress__number">{{ step }}{% set step = step + 1 %}
+                </div>
+                <div class="ec-progress__label">{{ 'front.cart.nav__complete'|trans }}
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="ec-cartCompleteRole">
+    <div class="ec-off3Grid ec-text-ac">
+        <div class="ec-off3Grid__cell">
+            <div class="ec-reportHeading">
+                <h2>{{ 'front.shopping.complete_message__title'|trans }}</h2>
+            </div>
+            <p class="ec-reportDescription">
+                {{ 'front.shopping.complete_message__body'|trans|nl2br }}
+                {% if Order.id %}
+                    <br /><br /><strong>{{ 'front.shopping.order_no'|trans }} : {{ Order.orderNo }}</strong>
+                {% endif %}
+            </p>
+
+            {% if Order.complete_message is not empty %}
+                {{ Order.complete_message|raw }}
+            {% endif %}
+
+            <div class="ec-off4Grid">
+                {% if hasNextCart %}
+                    <div class="ec-off4Grid__cell"><a class="ec-blockBtn--primary" href="{{ url('cart') }}">{{ 'front.shopping.continue'|trans }}</a></div>
+                {% else %}
+                    <div class="ec-off4Grid__cell"><a class="ec-blockBtn--cancel" href="{{ url('homepage') }}">{{ 'common.go_to_top'|trans }}</a></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+      
+<div class="ec-cartCompleteRole">
+    <div class="ec-off3Grid ec-text-ac">
+        <div class="ec-off3Grid__cell">
+            <div class="ec-reportHeading">
+                <h2>会員登録をしませんか？</h2>
+            </div>
+            <p class="ec-reportDescription">
+                只今ご入力いただいた情報をもとに会員登録ができます。<br />
+            <br />
+            会員登録をすれば、次回以降のお買い物時にフォーム入力を省略できますので、<br />
+            楽々ショッピングができたり、その他、お気に入り機能が使えたり、注文履歴が確認できたり、<br />お得情報がメールで届いたり、ポイントをためたり使ったりできたりと、便利です。<br />
+            <br />
+            会員登録をご希望の場合は、以下フォームにご希望のパスワードを入力し、<br />
+            「会員登録する」ボタンを押してください。<br />
+            <br />
+            その後数分でご注文時にご入力いただきましたメールアドレスに<br />
+            仮会員登録のメールが送信されますので、<br />
+            届いたメールに従って本登録をお願いいたします。</p>
+            {{ form_start(form) }}
+            <dl>
+                <dl>
+                    <dt>
+                        {{ form_label(form.password, 'common.password', { 'label_attr': {'class': 'ec-label' }}) }}
+                    </dt>
+                    <dd>
+                        <div class="ec-input{{ has_errors(form.password.first) ? ' error' }}">
+                            {{ form_widget(form.password.first, {
+                                'attr': { 'placeholder': 'common.password_sample'|trans({ '%min%': eccube_config.eccube_password_min_len, '%max%': eccube_config.eccube_password_max_len }) },
+                                'type': 'password'
+                            }) }}
+                            {{ form_errors(form.password.first) }}
+                        </div>
+                        <div class="ec-input{{ has_errors(form.password.second) ? ' error' }}">
+                            {{ form_widget(form.password.second, {
+                                'attr': { 'placeholder': 'common.repeated_confirm'|trans },
+                                'type': 'password'
+                            }) }}
+                            {{ form_errors(form.password.second) }}
+                        </div>
+                    </dd>
+                </dl>
+            </dl>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

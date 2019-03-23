@@ -7,7 +7,7 @@ use Eccube\Event\EccubeEvents;
 use Eccube\Event\EventArgs;
 use Eccube\Event\TemplateEvent;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Customize\Form\Type\GuestRegister;
+use Customize\Form\Type\NonMemberRegisterType;
 use Eccube\Repository\CustomerRepository;
 use Eccube\Service\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\ControllerTrait;
@@ -96,7 +96,7 @@ class NonMemberRegisterSubscriber implements EventSubscriberInterface
         
         $request = $event->getRequest();
         
-        $builder = $this->container->get('form.factory')->createBuilder(GuestRegister::class, [], ["Order" => $Order]);
+        $builder = $this->container->get('form.factory')->createBuilder(NonMemberRegisterType::class, [], ["Order" => $Order]);
         $form = $builder->getForm();
         
         $form->handleRequest($request);
